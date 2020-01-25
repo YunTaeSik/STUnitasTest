@@ -5,4 +5,7 @@
 
     <string name="cancel">"취소"</string>
 
+
+    <string name="error_message">"에러가 발생했습니다. 네트워크를 확인해주세요."</string>
+
 </resources>

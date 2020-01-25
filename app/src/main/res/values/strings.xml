@@ -3,4 +3,5 @@
     <string name="msg_quit">Pressing the "back" button ends.</string>
 
     <string name="cancel">"Cancel"</string>
+    <string name="error_message">"에러가 발생했습니다. 네트워크를 확인해주세요."</string>
 </resources>
