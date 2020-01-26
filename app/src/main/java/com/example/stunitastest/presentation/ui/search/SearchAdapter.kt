@@ -41,11 +41,6 @@ class SearchAdapter : ListAdapter<Document, SearchAdapter.SearchViewHolder>(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Document) {
             binding.data = data
-
-            Glide.with(binding.root.context).load(data.image_url).thumbnail(0.1f)
-                .error(R.drawable.img_error)
-                .signature(ObjectKey(data))
-                .into(binding.image)
         }
     }
 
