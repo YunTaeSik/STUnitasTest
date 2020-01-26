@@ -17,6 +17,8 @@ import com.example.stunitastest.extension.log
 import com.example.stunitastest.extension.makeToast
 import com.example.stunitastest.presentation.ui.base.BackDoubleClickFinishActivity
 import com.example.stunitastest.presentation.viewmodel.SearchViewModel
+import com.example.stunitastest.utils.EndlessRecyclerOnScrollListener
+import com.example.stunitastest.utils.LinearLayoutManagerWrapper
 import com.yts.baseproject.extension.showLoading
 import com.yts.baseproject.extension.visible
 import kotlinx.android.synthetic.main.activity_search.*
@@ -42,19 +44,20 @@ class SearchActivity : BackDoubleClickFinishActivity<SearchBinding>(), View.OnCl
     private fun initView() {
         btn_text_delete.setOnClickListener(this)
 
-        list_search.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        list_search.layoutManager = LinearLayoutManagerWrapper(this, RecyclerView.VERTICAL, false)
         mSearchAdapter = SearchAdapter()
         list_search.adapter = mSearchAdapter
 
 
-        list_search.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                if (!recyclerView.canScrollVertically(1)) {
-
-                }
+        list_search.addOnScrollListener(object :
+            EndlessRecyclerOnScrollListener(list_search.layoutManager as LinearLayoutManager) {
+            override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView?) {
+                binding.model?.setPage(page)
+                binding.model?.getImages()
             }
+
         })
+
     }
 
     override fun observer() {
@@ -83,6 +86,7 @@ class SearchActivity : BackDoubleClickFinishActivity<SearchBinding>(), View.OnCl
         binding.model?.listDocument?.observe(this, Observer {
 
             mSearchAdapter?.submitList(it)
+            mSearchAdapter?.notifyDataSetChanged()
         })
     }
 

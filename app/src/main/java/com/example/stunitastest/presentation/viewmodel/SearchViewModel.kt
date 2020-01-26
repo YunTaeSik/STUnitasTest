@@ -10,6 +10,7 @@ import com.example.stunitastest.domain.repository.SearchRepository
 import com.example.stunitastest.domain.response.SearchResponse
 import com.example.stunitastest.entity.Document
 import com.example.stunitastest.extension.addAll
+import com.example.stunitastest.extension.clear
 import com.example.stunitastest.extension.log
 import com.example.stunitastest.presentation.viewmodel.base.BaseViewModel
 import io.reactivex.Observable
@@ -46,15 +47,18 @@ class SearchViewModel(application: Application) : BaseViewModel(application) {
         _query.value = query
     }
 
+    fun setPage(page: Int) {
+        _page.value = page
+    }
+
     fun search(query: String) {
         setQuery(query)
-
         searchDisposable?.dispose()
-
         if (query.isNotEmpty()) {
             searchDisposable =
                 Observable.timer(1, TimeUnit.SECONDS)
                     .subscribe({
+                        _listDocument.clear()
                         getImages()
                     }, {
                         it.printStackTrace()
@@ -77,8 +81,11 @@ class SearchViewModel(application: Application) : BaseViewModel(application) {
                     if (it.documents?.size == 0) {
                         _toastMessage.postValue(context.getString(R.string.error_query_size_null_message))
                     }
+                    if (it.meta?.total_count != _listDocument.value?.size) {
+                        _listDocument.addAll(it.documents!!)
+                    } else {
 
-                    _listDocument.postValue(it.documents)
+                    }
 
                     _isLoading.postValue(false)
                 }, {
