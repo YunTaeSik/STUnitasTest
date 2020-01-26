@@ -13,18 +13,19 @@ import retrofit2.http.Query
 interface SearchService {
     //유저 정보 얻어오기
 
-    @GET("search/image")
+
+    @GET("/v2/search/image")
     fun getImages(
         @Header("Authorization") serverAuth: String,
         @Query("query") query: String,
-        @Query("sort") sort: String,
-        @Query("page") page: Int,
-        @Query("size") size: Int
+        @Query("sort") sort: String?,
+        @Query("page") page: Int?,
+        @Query("size") size: Int?
         ): Observable<SearchResponse>
 
 
     object Creator {
-        private val URL = "https://dapi.kakao.com/v2/"
+        private const val URL = "https://dapi.kakao.com"
 
         fun create(): SearchService {
             val retrofit = Retrofit.Builder()

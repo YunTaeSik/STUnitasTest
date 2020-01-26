@@ -12,18 +12,55 @@
             type="com.example.stunitastest.presentation.viewmodel.SearchViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.activity.MainActivity">
+        android:animateLayoutChanges="true"
+        android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/layout_search"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:background="@color/colorPrimaryDark"
+            android:orientation="horizontal">
 
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edit_search"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorPrimaryDark"
+                android:hint="@string/search"
+                android:padding="16dp"
+                android:text="@{model.query}"
+                android:textColor="@color/textColor" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btn_text_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:visibility="gone"
+                app:srcCompat="@drawable/ic_close_white_24dp" />
 
         </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:visibility="gone" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+    </LinearLayout>
+
 </layout>

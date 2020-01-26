@@ -3,7 +3,7 @@ package com.example.stunitastest.presentation.ui.base
 import androidx.databinding.ViewDataBinding
 import com.example.stunitastest.R
 import com.yts.baseproject.extension.hideKeyboard
-import com.yts.baseproject.extension.makeToast
+import com.example.stunitastest.extension.makeToast
 
 abstract class BackDoubleClickFinishActivity<B : ViewDataBinding> : BaseActivity<B>() {
     private val TIME_INTERVAL = 2000

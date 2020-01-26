@@ -1,24 +1,10 @@
 package com.example.stunitastest.domain.response
 
+import com.example.stunitastest.entity.Document
+import com.example.stunitastest.entity.Meta
+
 public class SearchResponse {
-    val meta : ResultMeta? = null
-    val documents : List<ResultDocument>? = null
+    val meta : Meta? = null
+    val documents : List<Document>? = null
 
-   public class ResultMeta{
-        val total_count : Int? = null
-        val pageable_count : Int? = null
-        val is_end :Boolean? = null
-    }
-    public class ResultDocument{
-        val collection :String? = null
-        val thumbnail_url :String? = null
-        val image_url :String? = null
-        val width :Int? = null
-        val height :Int? = null
-        val display_sitename :String? = null
-        val doc_url :String? = null
-        val datetime :String? = null
-
-
-    }
 }

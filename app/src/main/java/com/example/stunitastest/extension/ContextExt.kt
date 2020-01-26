@@ -1,11 +1,11 @@
-package com.yts.baseproject.extension
+package com.example.stunitastest.extension
 
 import android.content.Context
 import android.content.DialogInterface
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.yts.baseproject.R
+import com.example.stunitastest.R
 
 /**
  * 토스트 만들기
@@ -27,6 +27,6 @@ fun Context.createDialog(title:String, message:String, positiveText:String, posi
     dialog.setTitle(title)
     dialog.setMessage(message)
     dialog.setPositiveButton(positiveText,positiveClickListener)
-    dialog.setNegativeButton(R.string.cancel , { dialogInterface, i -> dialogInterface.dismiss() })
+    dialog.setNegativeButton(R.string.cancel , { dialogInterface, _ -> dialogInterface.dismiss() })
     dialog.show()
 }
