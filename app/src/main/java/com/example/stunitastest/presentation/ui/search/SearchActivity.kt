@@ -52,6 +52,7 @@ class SearchActivity : BackDoubleClickFinishActivity<SearchBinding>(), View.OnCl
         list_search.addOnScrollListener(object :
             EndlessRecyclerOnScrollListener(list_search.layoutManager as LinearLayoutManager) {
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView?) {
+                log("onLoadMore page = $page")
                 binding.model?.setPage(page)
                 binding.model?.getImages()
             }
