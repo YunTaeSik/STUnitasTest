@@ -27,14 +27,25 @@
  
  ## 과제 구현
  
+ ### 사용언어
+ Kotlin
+ 
  ### Architecture
+ Clean Architecture
+ 
  <div>
   <img src="https://user-images.githubusercontent.com/23161645/73226529-c3e90080-41b3-11ea-9f21-992c4c60335f.png" hspace=8 width = 250>
  </div>
      
      
- **Presentation Layer**
-   
+ **Presentation Layer**  
+ Presentation 레이어는 의존성이 높은 UI 레벨의 레이어입니다.  
+현재 저는 MVVM패턴을 사용하고있습니다.  
+ - base (각종 Base 클래스)
+ - bidingAdapter (Android BindingAdapter) 
+ - di (Dagger2.0)
+ - ui (View, ViewModel)
+ 
  **Domain Layer**
    
  **Data Layer**  
