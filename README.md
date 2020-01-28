@@ -41,10 +41,10 @@
  **Presentation Layer**  
  Presentation 레이어는 의존성이 높은 UI 레벨의 레이어입니다.  
 현재 저는 MVVM패턴을 사용하고있습니다.  
- - base (각종 Base 클래스)
- - bidingAdapter (Android BindingAdapter) 
- - di (Dagger2.0)
- - ui (View, ViewModel)
+ - [base (각종 Base 클래스)](https://github.com/YunTaeSik/STUnitasTest/tree/master/app/src/main/java/com/example/stunitastest/presentation/base)
+ - [bidingAdapter (Android BindingAdapter)](https://github.com/YunTaeSik/STUnitasTest/tree/master/app/src/main/java/com/example/stunitastest/presentation/bindingAdapter) 
+ - [di (Dagger2.0)](https://github.com/YunTaeSik/STUnitasTest/tree/master/app/src/main/java/com/example/stunitastest/presentation/di)
+ - [ui (View, ViewModel)](https://github.com/YunTaeSik/STUnitasTest/tree/master/app/src/main/java/com/example/stunitastest/presentation/i)
    
    
  **Domain Layer**  
