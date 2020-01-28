@@ -1,4 +1,4 @@
-## STUnitasTest
+## STUnitasTest [![HitCount](http://hits.dwyl.io/YunTaeSik/STUnitasTest.svg)](http://hits.dwyl.io/YunTaeSik/STUnitasTest)
 [ST Unitas] 모바일 직군 사전 과제
 
 ## 과제 목표   
