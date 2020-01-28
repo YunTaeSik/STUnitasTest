@@ -17,7 +17,7 @@
  **제한 사항**
   - 사용 언어 : Java
   - 사용 필수 라이브러리 : OkHttp3 / Retrofit2 / Jackson 혹은 Gson / Glide4
-  - MVP 혹은 MVVM 사용
+  - MVP 혹은 MVVM 사용  
 **추가 구현 목표**
  - Kotlin 사용
  - Clean Architecture 사용
@@ -25,4 +25,12 @@
  - Rx2 사용
  - Dagger2 사용
  
- ## 구현 사항
+ ## 과제 구현
+ 
+ ### Clean Architecture
+ <div>
+  <img src="https://user-images.githubusercontent.com/23161645/73226529-c3e90080-41b3-11ea-9f21-992c4c60335f.png" hspace=8 width = 250>
+ </div>
+ 
+ **Domain Layer**
+ 
