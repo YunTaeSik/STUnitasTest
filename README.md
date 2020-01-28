@@ -45,7 +45,10 @@
  - bidingAdapter (Android BindingAdapter) 
  - di (Dagger2.0)
  - ui (View, ViewModel)
+   
+   
+ **Domain Layer**  
  
- **Domain Layer**
+   
    
  **Data Layer**  
