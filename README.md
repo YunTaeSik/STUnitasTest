@@ -161,3 +161,5 @@ Data Layer 에서는 Domain Layer를 알고 있으므로  Domain Layer에 정의
         }
     }
 ```
+
+## 이미지
