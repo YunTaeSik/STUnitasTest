@@ -36,7 +36,7 @@
  
  <div>
   <img src="https://user-images.githubusercontent.com/23161645/73226529-c3e90080-41b3-11ea-9f21-992c4c60335f.png" width = 250>
-  <img src="https://miro.medium.com/max/1258/1*a-AUcEVdyRJhIepo9JyJBw.png" hspace=8 width = 250>
+  <img src="http://miro.medium.com/max/1258/1*a-AUcEVdyRJhIepo9JyJBw.png" hspace=8 width = 250>
  </div>
      
      
@@ -163,6 +163,5 @@ Data Layer 에서는 Domain Layer를 알고 있으므로  Domain Layer에 정의
 ```
 
 ## 이미지  
-![Alt Text](https://im2.ezgif.com/tmp/ezgif-2-e79db6e9f26e.gif)
-[[https://im2.ezgif.com/tmp/ezgif-2-e79db6e9f26e.gif | height = 100px ]]
+
 
