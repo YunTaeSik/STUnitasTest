@@ -1,26 +1,18 @@
-package com.example.stunitastest.presentation.viewmodel
+package com.example.stunitastest.presentation.ui.search
 
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.paging.PagedList
 import com.example.stunitastest.R
 import com.example.stunitastest.data.repository.SearchRepositoryImp
 import com.example.stunitastest.domain.repository.SearchRepository
-import com.example.stunitastest.domain.response.SearchResponse
-import com.example.stunitastest.entity.Document
+import com.example.stunitastest.domain.entity.Document
 import com.example.stunitastest.extension.addAll
 import com.example.stunitastest.extension.clear
-import com.example.stunitastest.extension.log
-import com.example.stunitastest.presentation.viewmodel.base.BaseViewModel
+import com.example.stunitastest.presentation.base.BaseViewModel
 import io.reactivex.Observable
-import io.reactivex.Scheduler
-import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
-import kotlin.math.log
 
 class SearchViewModel(application: Application) : BaseViewModel(application) {
     private var searchDisposable: Disposable? = null

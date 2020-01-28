@@ -1,4 +1,4 @@
-package com.example.stunitastest.presentation.viewmodel.base
+package com.example.stunitastest.presentation.base
 
 import android.app.Application
 import android.content.Context

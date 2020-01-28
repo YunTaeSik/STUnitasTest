@@ -8,7 +8,7 @@
 
         <variable
             name="model"
-            type="com.example.stunitastest.presentation.viewmodel.SearchViewModel" />
+            type="com.example.stunitastest.presentation.ui.search.SearchViewModel" />
     </data>
 
 

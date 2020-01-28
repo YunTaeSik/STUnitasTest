@@ -6,11 +6,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.signature.ObjectKey
 import com.example.stunitastest.R
 import com.example.stunitastest.databinding.SearchItemBinding
-import com.example.stunitastest.entity.Document
+import com.example.stunitastest.domain.entity.Document
 
 class SearchAdapter : ListAdapter<Document, SearchAdapter.SearchViewHolder>(
     PrintHistoryDiffUtil()
@@ -28,12 +26,9 @@ class SearchAdapter : ListAdapter<Document, SearchAdapter.SearchViewHolder>(
             oldItem: Document,
             newItem: Document
         ): Boolean {
-            return if (oldItem != null && newItem != null) {
-                ((oldItem.collection == newItem.collection) && (oldItem.thumbnail_url == newItem.thumbnail_url) && (oldItem.image_url == newItem.image_url) && (oldItem.width == newItem.width)
-                        && (oldItem.height == newItem.height) && (oldItem.display_sitename == newItem.display_sitename) && (oldItem.doc_url == newItem.doc_url) && (oldItem.datetime == newItem.datetime))
-            } else {
-                false
-            }
+            return (oldItem.collection == newItem.collection) && (oldItem.thumbnail_url == newItem.thumbnail_url) && (oldItem.image_url == newItem.image_url) && (oldItem.width == newItem.width)
+                    && (oldItem.height == newItem.height) && (oldItem.display_sitename == newItem.display_sitename) && (oldItem.doc_url == newItem.doc_url) && (oldItem.datetime == newItem.datetime)
+
         }
     }
 

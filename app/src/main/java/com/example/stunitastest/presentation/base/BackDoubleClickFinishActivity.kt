@@ -1,4 +1,4 @@
-package com.example.stunitastest.presentation.ui.base
+package com.example.stunitastest.presentation.base
 
 import androidx.databinding.ViewDataBinding
 import com.example.stunitastest.R

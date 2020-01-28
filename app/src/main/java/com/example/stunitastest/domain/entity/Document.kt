@@ -1,4 +1,4 @@
-package com.example.stunitastest.entity
+package com.example.stunitastest.domain.entity
 
 class Document {
     val collection :String? = null

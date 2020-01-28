@@ -15,8 +15,7 @@ import com.example.stunitastest.R
 import com.example.stunitastest.databinding.SearchBinding
 import com.example.stunitastest.extension.log
 import com.example.stunitastest.extension.makeToast
-import com.example.stunitastest.presentation.ui.base.BackDoubleClickFinishActivity
-import com.example.stunitastest.presentation.viewmodel.SearchViewModel
+import com.example.stunitastest.presentation.base.BackDoubleClickFinishActivity
 import com.example.stunitastest.utils.EndlessRecyclerOnScrollListener
 import com.example.stunitastest.utils.LinearLayoutManagerWrapper
 import com.yts.baseproject.extension.showLoading

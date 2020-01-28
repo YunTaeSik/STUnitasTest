@@ -8,7 +8,7 @@
 
         <variable
             name="data"
-            type="com.example.stunitastest.entity.Document" />
+            type="com.example.stunitastest.domain.entity.Document" />
 
     </data>
 

@@ -4,9 +4,6 @@ import com.example.stunitastest.domain.response.SearchResponse
 import io.reactivex.Observable
 
 
-/**
- * To make an interaction between [AlbumRepositoryImp] & [GetAlbumsUseCase]
- * */
 interface SearchRepository {
 
     /**
