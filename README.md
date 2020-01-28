@@ -162,4 +162,7 @@ Data Layer 에서는 Domain Layer를 알고 있으므로  Domain Layer에 정의
     }
 ```
 
-## 이미지
+## 이미지  
+![Alt Text](https://im2.ezgif.com/tmp/ezgif-2-e79db6e9f26e.gif)
+[[https://im2.ezgif.com/tmp/ezgif-2-e79db6e9f26e.gif | height = 100px ]]
+
