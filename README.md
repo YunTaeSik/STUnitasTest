@@ -165,3 +165,10 @@ Data Layer 에서는 Domain Layer를 알고 있으므로  Domain Layer에 정의
 ## App 구현 영상  
 
 [![IMAGE ALT TEXT HERE](https://i9.ytimg.com/vi/P1HxcZGQ6Gs/mq2.jpg?sqp=CNHrv_EF&rs=AOn4CLD_BCzB8wxKVIBRT1xzRPZBgGBbXw)](https://youtu.be/P1HxcZGQ6Gs)
+
+## 에러 이미지 ( 네트워크 통신 안될때 / 검색결과 없을시 )
+
+ <div>
+  <img src="https://user-images.githubusercontent.com/23161645/73249346-0cc2a880-41f8-11ea-87d2-4835f0207adb.jpg" width = 250>
+  <img src="https://user-images.githubusercontent.com/23161645/73249348-0d5b3f00-41f8-11ea-903f-6d781caab0a9.jpg" hspace=8 width = 250>
+ </div>
