@@ -65,3 +65,99 @@ Data Layer 에서는 Domain Layer를 알고 있으므로  Domain Layer에 정의
 여기에서는 Data Source에의 의존성이 생기므로 안드로이드 의존성이 생길 수 있습니다.
   - [repository (Domain repository를 실제로 구현하는부분)](https://github.com/YunTaeSik/STUnitasTest/tree/master/app/src/main/java/com/example/stunitastest/data/repository)
   - [source (Retrofit2.0 Service 구현)](https://github.com/YunTaeSik/STUnitasTest/tree/master/app/src/main/java/com/example/stunitastest/data/source/remote)
+
+
+### Android Data Binding Example  
+[item_search.xml](https://github.com/YunTaeSik/STUnitasTest/blob/master/app/src/main/res/layout/item_search.xml)
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="SearchItemBinding">
+
+        <variable
+            name="data"
+            type="com.example.stunitastest.domain.entity.Document" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:minHeight="100dp"
+        android:orientation="horizontal"
+        app:cardBackgroundColor="@color/colorPrimary"
+        app:cardCornerRadius="4dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image"
+            srcCompat="@{data.image_url}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:background="@color/cardBackground" />
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>
+```
+
+### RxAndroid Example  
+[SearchViewModel.kt](https://github.com/YunTaeSik/STUnitasTest/blob/master/app/src/main/java/com/example/stunitastest/presentation/ui/search/SearchViewModel.kt)
+```Kotlin
+    /**
+     * 검색
+     */
+    fun search(query: String) {
+        setQuery(query)
+        searchDisposable?.dispose()
+        if (query.isNotEmpty()) {
+            searchDisposable =
+                Observable.timer(1, TimeUnit.SECONDS)
+                    .subscribe({
+                        _listDocument.clear()
+                        getImages()
+                    }, {
+                        it.printStackTrace()
+                    })
+        }
+    }
+
+    /**
+     * 이미지목록 가져오기
+     */
+    fun getImages() {
+        if (query.value != null) {
+            _isLoading.postValue(true)
+            addDisposable(
+                searchRepository.getImages(
+                    query.value!!,
+                    sort.value,
+                    page.value,
+                    size.value
+                ).subscribe({
+
+                    if (it.documents?.size == 0) {
+                        _toastMessage.postValue(context.getString(R.string.error_query_size_null_message))
+                    }
+                    if (it.meta?.total_count != _listDocument.value?.size) {
+                        _listDocument.addAll(it.documents!!)
+                    } else {
+
+                    }
+
+                    _isLoading.postValue(false)
+                }, {
+                    it.printStackTrace()
+                    _toastMessage.postValue(context.getString(R.string.error_message))
+                    _isLoading.postValue(false)
+                })
+            )
+        } else {
+            _toastMessage.postValue(context.getString(R.string.error_query_text_null_message))
+        }
+    }
+```
