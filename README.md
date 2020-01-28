@@ -1,4 +1,4 @@
-## STUnitasTest
+## STUnitasTest 
 [ST Unitas] 모바일 직군 사전 과제
 
 ## 과제 목표   
@@ -27,10 +27,14 @@
  
  ## 과제 구현
  
- ### Clean Architecture
+ ### Architecture
  <div>
   <img src="https://user-images.githubusercontent.com/23161645/73226529-c3e90080-41b3-11ea-9f21-992c4c60335f.png" hspace=8 width = 250>
  </div>
- 
+     
+     
+ **Presentation Layer**
+   
  **Domain Layer**
- 
+   
+ **Data Layer**  
