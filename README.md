@@ -57,3 +57,7 @@
    
    
  **Data Layer**  
+Data Layer 에서는 Domain Layer를 알고 있으므로  Domain Layer에 정의된 Repository를 실제로 구현을 하는 것입니다.   
+여기에서는 Data Source에의 의존성이 생기므로 안드로이드 의존성이 생길 수 있습니다.
+  - [repository (Domain repository를 실제로 구현하는부분)](https://github.com/YunTaeSik/STUnitasTest/tree/master/app/src/main/java/com/example/stunitastest/data/repository)
+  - [source (Retrofit2.0 Service 구현)](https://github.com/YunTaeSik/STUnitasTest/tree/master/app/src/main/java/com/example/stunitastest/data/source/remote)
