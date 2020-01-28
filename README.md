@@ -31,7 +31,7 @@
  Kotlin
  
  ### Architecture
- Clean Architecture
+ Clean Architecture  
  
  <div>
   <img src="https://user-images.githubusercontent.com/23161645/73226529-c3e90080-41b3-11ea-9f21-992c4c60335f.png" hspace=8 width = 250>
@@ -48,7 +48,11 @@
    
    
  **Domain Layer**  
- 
+  Domain Layer는 순수한 Java나 Kotlin 모듈입니다. 그 이유는 도메인 레이어에서 일어나는 이유는 실제로 사용자가 하는 일련의 행동들을 적용하는 것인데 이 역시 안드로이드에 의존할 필요가 없기 때문입니다. 
+저는 Entity, Response, Repository를 담았습니다.
+  - [entity 순수한 Entity값](https://github.com/YunTaeSik/STUnitasTest/tree/master/app/src/main/java/com/example/stunitastest/domain/entity)
+  - [response API Response 객체](https://github.com/YunTaeSik/STUnitasTest/tree/master/app/src/main/java/com/example/stunitastest/domain/response)
+  - [repository를 API Interface](https://github.com/YunTaeSik/STUnitasTest/tree/master/app/src/main/java/com/example/stunitastest/domain/repository)
    
    
  **Data Layer**  
