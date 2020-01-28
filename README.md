@@ -18,6 +18,7 @@
   - 사용 언어 : Java
   - 사용 필수 라이브러리 : OkHttp3 / Retrofit2 / Jackson 혹은 Gson / Glide4
   - MVP 혹은 MVVM 사용  
+  
 **추가 구현 목표**
  - Kotlin 사용
  - Clean Architecture 사용
