@@ -23,6 +23,7 @@ import com.yts.baseproject.extension.visible
 import kotlinx.android.synthetic.main.activity_search.*
 
 class SearchActivity : BackDoubleClickFinishActivity<SearchBinding>(), View.OnClickListener {
+
     private var mSearchAdapter: SearchAdapter? = null
 
     override fun onLayoutId(): Int {
@@ -38,6 +39,7 @@ class SearchActivity : BackDoubleClickFinishActivity<SearchBinding>(), View.OnCl
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initView()
+
     }
 
     private fun initView() {
