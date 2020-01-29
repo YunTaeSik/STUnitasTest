@@ -25,8 +25,6 @@ class SearchViewModel(application: Application) : BaseViewModel(application) {
     private val searchUseCase: SearchUseCase by lazy {
         SearchUseCaseImp
     }
-
-
     private var _query = MutableLiveData<String>()
     private var _sort = MutableLiveData<String>()
     private var _size = MutableLiveData<Int>()
