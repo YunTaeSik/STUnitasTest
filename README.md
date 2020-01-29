@@ -66,6 +66,37 @@ Data Layer 에서는 Domain Layer를 알고 있으므로  Domain Layer에 정의
   - [repository (Domain repository를 실제로 구현하는부분)](https://github.com/YunTaeSik/STUnitasTest/tree/master/app/src/main/java/com/example/stunitastest/data/repository)
   - [source (Retrofit2.0 Service 구현)](https://github.com/YunTaeSik/STUnitasTest/tree/master/app/src/main/java/com/example/stunitastest/data/source/remote)
 
+  
+### Retrofit2 Example
+
+[SearchService.kt](https://github.com/YunTaeSik/STUnitasTest/blob/master/app/src/main/java/com/example/stunitastest/data/source/remote/SearchService.kt)
+```Kotlin
+interface SearchService {
+    @GET("/v2/search/image")
+    fun getImages(
+        @Header("Authorization") serverAuth: String,
+        @Query("query") query: String,
+        @Query("sort") sort: String?,
+        @Query("page") page: Int?,
+        @Query("size") size: Int?
+        ): Observable<SearchResponse>
+
+
+    object Creator {
+        private const val URL = "https://dapi.kakao.com"
+
+        fun create(): SearchService {
+            val retrofit = Retrofit.Builder()
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(URL)
+                .build()
+            return retrofit.create(SearchService::class.java)
+        }
+    }
+}
+```
+
 
 ### Android Data Binding Example, Glide 
 [ImageBindingAdapter.kt](https://github.com/YunTaeSik/STUnitasTest/blob/master/app/src/main/res/layout/item_search.xml)
