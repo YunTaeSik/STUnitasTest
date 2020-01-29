@@ -18,12 +18,12 @@ import com.example.stunitastest.extension.makeToast
 import com.example.stunitastest.presentation.base.BackDoubleClickFinishActivity
 import com.example.stunitastest.utils.EndlessRecyclerOnScrollListener
 import com.example.stunitastest.utils.LinearLayoutManagerWrapper
+import com.yts.baseproject.extension.hideKeyboard
 import com.yts.baseproject.extension.showLoading
 import com.yts.baseproject.extension.visible
 import kotlinx.android.synthetic.main.activity_search.*
 
 class SearchActivity : BackDoubleClickFinishActivity<SearchBinding>(), View.OnClickListener {
-
     private var mSearchAdapter: SearchAdapter? = null
 
     override fun onLayoutId(): Int {
@@ -39,7 +39,6 @@ class SearchActivity : BackDoubleClickFinishActivity<SearchBinding>(), View.OnCl
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initView()
-
     }
 
     private fun initView() {
@@ -49,7 +48,17 @@ class SearchActivity : BackDoubleClickFinishActivity<SearchBinding>(), View.OnCl
         mSearchAdapter = SearchAdapter()
         list_search.adapter = mSearchAdapter
 
+        /**
+         * 터치시 키보드 가림
+         */
+        list_search.setOnTouchListener { _, _ ->
+            hideKeyboard()
+            false
+        }
 
+        /**
+         * Load More 함수
+         */
         list_search.addOnScrollListener(object :
             EndlessRecyclerOnScrollListener(list_search.layoutManager as LinearLayoutManager) {
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView?) {
@@ -59,7 +68,6 @@ class SearchActivity : BackDoubleClickFinishActivity<SearchBinding>(), View.OnCl
             }
 
         })
-
     }
 
     override fun observer() {

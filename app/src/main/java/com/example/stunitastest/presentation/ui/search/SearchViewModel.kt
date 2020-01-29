@@ -6,25 +6,23 @@ import androidx.lifecycle.MutableLiveData
 import com.example.stunitastest.R
 import com.example.stunitastest.data.repository.SearchRepositoryImp
 import com.example.stunitastest.domain.entity.Document
-import com.example.stunitastest.domain.repository.SearchRepository
 import com.example.stunitastest.domain.usecase.search.SearchUseCase
 import com.example.stunitastest.domain.usecase.search.SearchUseCaseImp
 import com.example.stunitastest.extension.addAll
 import com.example.stunitastest.extension.clear
 import com.example.stunitastest.presentation.base.BaseViewModel
-import com.example.stunitastest.presentation.di.DaggerViewModelComponent
-import com.example.stunitastest.presentation.di.RepositoryModule
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 import java.util.concurrent.TimeUnit
-import javax.inject.Inject
 
-class SearchViewModel(application: Application) : BaseViewModel(application) {
+class SearchViewModel constructor(application: Application) : BaseViewModel(application) {
     private var searchDisposable: Disposable? = null
 
     private val searchUseCase: SearchUseCase by lazy {
-        SearchUseCaseImp
+        SearchUseCaseImp(SearchRepositoryImp)
     }
+
+
     private var _query = MutableLiveData<String>()
     private var _sort = MutableLiveData<String>()
     private var _size = MutableLiveData<Int>()

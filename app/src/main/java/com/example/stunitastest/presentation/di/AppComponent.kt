@@ -18,3 +18,4 @@ interface AppComponent : AndroidInjector<BaseApplication> {
     abstract class Builder : AndroidInjector.Factory<BaseApplication>
 
 }
+
