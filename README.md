@@ -57,7 +57,7 @@
   - [entity (순수한 Entity값)](https://github.com/YunTaeSik/STUnitasTest/tree/master/app/src/main/java/com/example/stunitastest/domain/entity)
   - [response (API Response 객체)](https://github.com/YunTaeSik/STUnitasTest/tree/master/app/src/main/java/com/example/stunitastest/domain/response)
   - [repository (API Interface)](https://github.com/YunTaeSik/STUnitasTest/tree/master/app/src/main/java/com/example/stunitastest/domain/repository)
-   - [usercase (UseCase Presentation과 연결부분)](https://github.com/YunTaeSik/STUnitasTest/tree/master/app/src/main/java/com/example/stunitastest/domain/usecase)
+   - [usecase (UseCase Presentation과 연결부분)](https://github.com/YunTaeSik/STUnitasTest/tree/master/app/src/main/java/com/example/stunitastest/domain/usecase)
    
    
  **Data Layer**  
