@@ -18,14 +18,6 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class SearchViewModel(application: Application) : BaseViewModel(application) {
-
-    init {
-        DaggerViewModelComponent.builder().repositoryModule(RepositoryModule()).build().inject(this)
-    }
-
-/*     @Inject
-     lateinit var searchRepository: SearchRepository*/
-
     private var searchDisposable: Disposable? = null
 
     private val searchRepository: SearchRepository by lazy {

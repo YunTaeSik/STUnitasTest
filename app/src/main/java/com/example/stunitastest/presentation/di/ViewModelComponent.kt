@@ -2,8 +2,9 @@ package com.example.stunitastest.presentation.di
 
 import com.example.stunitastest.presentation.base.BaseViewModel
 import dagger.Component
-import dagger.android.AndroidInjectionModule
+import javax.inject.Singleton
 
+@Singleton
 @Component(
     modules = [
         RepositoryModule::class
@@ -12,4 +13,10 @@ import dagger.android.AndroidInjectionModule
 interface ViewModelComponent {
 
     fun inject(model: BaseViewModel)
+
+    @Component.Builder
+    interface Builder {
+        fun build() : ViewModelComponent
+        fun repositoryModule(module : RepositoryModule) : Builder
+    }
 }

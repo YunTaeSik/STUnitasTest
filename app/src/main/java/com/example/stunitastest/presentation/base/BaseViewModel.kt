@@ -15,10 +15,8 @@ import io.reactivex.disposables.Disposable
 import javax.inject.Inject
 
 open class BaseViewModel(application: Application) : AndroidViewModel(application) {
-
-
     protected val context: Context = application.applicationContext
-    protected val compositeDisposable = CompositeDisposable()
+    private val compositeDisposable = CompositeDisposable()
 
     protected var _isLoading = MutableLiveData<Boolean>()
     protected var _toastMessage = MutableLiveData<String>()
@@ -30,7 +28,7 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
         compositeDisposable.add(disposable)
     }
 
-    fun clear() {
+    private fun clear() {
         compositeDisposable.clear()
     }
 
@@ -38,9 +36,4 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
         clear()
         super.onCleared()
     }
-
-    fun setToastMessage(text: String) {
-        _toastMessage.postValue(text)
-    }
-
 }
