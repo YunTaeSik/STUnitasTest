@@ -67,8 +67,25 @@ Data Layer 에서는 Domain Layer를 알고 있으므로  Domain Layer에 정의
   - [source (Retrofit2.0 Service 구현)](https://github.com/YunTaeSik/STUnitasTest/tree/master/app/src/main/java/com/example/stunitastest/data/source/remote)
 
 
-### Android Data Binding Example  
-[item_search.xml](https://github.com/YunTaeSik/STUnitasTest/blob/master/app/src/main/res/layout/item_search.xml)
+### Android Data Binding Example, Glide 
+[ImageBindingAdapter.kt](https://github.com/YunTaeSik/STUnitasTest/blob/master/app/src/main/res/layout/item_search.xml)
+```Kotlin
+    @JvmStatic
+    @BindingAdapter("srcCompat")
+    fun srcCompat(view: ImageView, url: String) {
+        val circularProgressDrawable = CircularProgressDrawable(view.context)
+        circularProgressDrawable.strokeWidth = 10f
+        circularProgressDrawable.centerRadius = 40f
+        circularProgressDrawable.start()
+
+        Glide.with(view.context).load(url).thumbnail(0.1f)
+            .placeholder(circularProgressDrawable)
+            .error(R.drawable.img_error)
+            .into(view)
+    }
+```
+
+[item_search.xml](https://github.com/YunTaeSik/STUnitasTest/blob/master/app/src/main/java/com/example/stunitastest/presentation/bindingAdapter/ImageBindingAdapter.kt)
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 
