@@ -14,8 +14,9 @@ import com.example.stunitastest.presentation.base.BaseViewModel
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
-class SearchViewModel constructor(application: Application) : BaseViewModel(application) {
+class SearchViewModel @Inject constructor(application: Application) : BaseViewModel(application) {
     private var searchDisposable: Disposable? = null
 
     private val searchUseCase: SearchUseCase by lazy {

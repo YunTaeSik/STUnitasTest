@@ -2,7 +2,7 @@ package com.example.stunitastest
 
 import android.content.Context
 import androidx.multidex.MultiDex
-import com.example.stunitastest.presentation.di.DaggerAppComponent
+import com.example.stunitastest.presentation.di.component.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 
@@ -14,6 +14,7 @@ class BaseApplication : DaggerApplication() {
 
     override fun onCreate() {
         super.onCreate()
+        DaggerAppComponent.factory().create(this).inject(this)
     }
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {

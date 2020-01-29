@@ -22,9 +22,11 @@ import com.yts.baseproject.extension.hideKeyboard
 import com.yts.baseproject.extension.showLoading
 import com.yts.baseproject.extension.visible
 import kotlinx.android.synthetic.main.activity_search.*
+import javax.inject.Inject
 
 class SearchActivity : BackDoubleClickFinishActivity<SearchBinding>(), View.OnClickListener {
-    private var mSearchAdapter: SearchAdapter? = null
+    @Inject
+    lateinit var searchAdapter: SearchAdapter
 
     override fun onLayoutId(): Int {
         return R.layout.activity_search
@@ -32,21 +34,24 @@ class SearchActivity : BackDoubleClickFinishActivity<SearchBinding>(), View.OnCl
 
     override fun setupViewModel(): SparseArray<ViewModel> {
         val setupViewModel = SparseArray<ViewModel>()
-        setupViewModel.put(BR.model, ViewModelProvider(this).get(SearchViewModel::class.java))
+        setupViewModel.put(
+            BR.model,
+            ViewModelProvider(this).get(SearchViewModel::class.java)
+        )
         return setupViewModel
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initView()
+
     }
 
     private fun initView() {
         btn_text_delete.setOnClickListener(this)
 
         list_search.layoutManager = LinearLayoutManagerWrapper(this, RecyclerView.VERTICAL, false)
-        mSearchAdapter = SearchAdapter()
-        list_search.adapter = mSearchAdapter
+        list_search.adapter = searchAdapter
 
         /**
          * 터치시 키보드 가림
@@ -95,8 +100,8 @@ class SearchActivity : BackDoubleClickFinishActivity<SearchBinding>(), View.OnCl
 
         binding.model?.listDocument?.observe(this, Observer {
 
-            mSearchAdapter?.submitList(it)
-            mSearchAdapter?.notifyDataSetChanged()
+            searchAdapter.submitList(it)
+            searchAdapter.notifyDataSetChanged()
         })
     }
 

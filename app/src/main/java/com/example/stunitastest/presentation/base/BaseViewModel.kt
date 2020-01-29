@@ -6,10 +6,9 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.stunitastest.BaseApplication
 import com.example.stunitastest.extension.log
-import com.example.stunitastest.presentation.di.AppComponent
-import com.example.stunitastest.presentation.di.DaggerAppComponent
-import com.example.stunitastest.presentation.di.DaggerViewModelComponent
+import com.example.stunitastest.presentation.di.component.DaggerAppComponent
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import javax.inject.Inject

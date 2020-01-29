@@ -1,30 +1,30 @@
-package com.example.stunitastest.presentation.di
+package com.example.stunitastest.presentation.di.module
 
-import android.os.Build
 import com.example.stunitastest.data.repository.SearchRepositoryImp
 import com.example.stunitastest.domain.repository.SearchRepository
 import com.example.stunitastest.domain.usecase.search.SearchUseCase
 import com.example.stunitastest.domain.usecase.search.SearchUseCaseImp
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
-object RepositoryModule {
+class RepositoryModule {
 
     @Provides
-    @Model
+    @Singleton
     fun provideSearchRepository(): SearchRepository {
         return SearchRepositoryImp
     }
 
     @Provides
-    @Model
-    fun provideSearchUseCase(): SearchUseCase {
-        return SearchUseCaseImp(provideSearchRepository())
+    @Singleton
+    fun provideSearchUseCase(searchRepository: SearchRepository): SearchUseCase {
+        return SearchUseCaseImp(searchRepository)
     }
 
     @Provides
-    @Model
+    @Singleton
     fun provideModel(): String {
         return "model"
     }
