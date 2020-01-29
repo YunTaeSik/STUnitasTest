@@ -210,6 +210,55 @@ interface SearchService {
         }
     }
 ```
+  
+### Dagger2 Example  
+Dagger2는 Application / Activity 까지만 연결.........  
+  
+**module**  
+```Kotlin
+@Module(includes = [AndroidSupportInjectionModule::class])
+interface ActivityModule {
+    @ContributesAndroidInjector
+    fun introActivityInjector(): IntroActivity
+
+    @ContributesAndroidInjector
+    fun searchActivityInjector(): SearchActivity
+}
+
+@Module
+class AdapterModule {
+    @Provides
+    @Singleton
+    fun provideSearchAdapter(): SearchAdapter {
+        return SearchAdapter()
+    }
+}
+```  
+  
+**component**
+```Kotlin
+@Singleton
+@Component(
+    modules = [
+        AndroidInjectionModule::class,
+        ActivityModule::class,
+        AdapterModule::class,
+        RepositoryModule::class
+    ]
+)
+interface AppComponent : AndroidInjector<BaseApplication> {
+
+    @Component.Factory
+    abstract class Builder : AndroidInjector.Factory<BaseApplication>
+
+}
+```  
+  
+**inject**  
+```Kotlin
+    @Inject
+    lateinit var searchAdapter: SearchAdapter
+```
 
 ## App 구현 영상  
 
