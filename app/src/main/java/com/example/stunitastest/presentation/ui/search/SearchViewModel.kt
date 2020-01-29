@@ -7,6 +7,8 @@ import com.example.stunitastest.R
 import com.example.stunitastest.data.repository.SearchRepositoryImp
 import com.example.stunitastest.domain.entity.Document
 import com.example.stunitastest.domain.repository.SearchRepository
+import com.example.stunitastest.domain.usecase.search.SearchUseCase
+import com.example.stunitastest.domain.usecase.search.SearchUseCaseImp
 import com.example.stunitastest.extension.addAll
 import com.example.stunitastest.extension.clear
 import com.example.stunitastest.presentation.base.BaseViewModel
@@ -20,8 +22,8 @@ import javax.inject.Inject
 class SearchViewModel(application: Application) : BaseViewModel(application) {
     private var searchDisposable: Disposable? = null
 
-    private val searchRepository: SearchRepository by lazy {
-        SearchRepositoryImp
+    private val searchUseCase: SearchUseCase by lazy {
+        SearchUseCaseImp
     }
 
 
@@ -72,7 +74,7 @@ class SearchViewModel(application: Application) : BaseViewModel(application) {
         if (query.value != null) {
             _isLoading.postValue(true)
             addDisposable(
-                searchRepository.getImages(
+                searchUseCase.getImages(
                     query.value!!,
                     sort.value,
                     page.value,
