@@ -14,8 +14,4 @@ interface ActivityModule {
     @ContributesAndroidInjector
     fun searchActivityInjector(): SearchActivity
 
-
-
-
-
 }
