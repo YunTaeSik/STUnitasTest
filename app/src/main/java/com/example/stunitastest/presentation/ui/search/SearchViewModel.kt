@@ -11,18 +11,20 @@ import com.example.stunitastest.extension.addAll
 import com.example.stunitastest.extension.clear
 import com.example.stunitastest.presentation.base.BaseViewModel
 import com.example.stunitastest.presentation.di.DaggerViewModelComponent
+import com.example.stunitastest.presentation.di.RepositoryModule
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class SearchViewModel(application: Application) : BaseViewModel(application) {
+
     init {
-        DaggerViewModelComponent.builder().build().inject(this)
+        DaggerViewModelComponent.builder().repositoryModule(RepositoryModule()).build().inject(this)
     }
 
-   /* @Inject
-    lateinit var searchRepository: SearchRepository*/
+/*     @Inject
+     lateinit var searchRepository: SearchRepository*/
 
     private var searchDisposable: Disposable? = null
 
@@ -53,6 +55,9 @@ class SearchViewModel(application: Application) : BaseViewModel(application) {
         _page.value = page
     }
 
+    /**
+     * 검색
+     */
     fun search(query: String) {
         setQuery(query)
         searchDisposable?.dispose()
@@ -68,7 +73,9 @@ class SearchViewModel(application: Application) : BaseViewModel(application) {
         }
     }
 
-
+    /**
+     * 이미지목록 가져오기
+     */
     fun getImages() {
         if (query.value != null) {
             _isLoading.postValue(true)

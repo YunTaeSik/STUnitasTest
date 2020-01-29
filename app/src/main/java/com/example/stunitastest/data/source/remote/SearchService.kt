@@ -11,9 +11,6 @@ import retrofit2.http.Header
 import retrofit2.http.Query
 
 interface SearchService {
-    //유저 정보 얻어오기
-
-
     @GET("/v2/search/image")
     fun getImages(
         @Header("Authorization") serverAuth: String,
