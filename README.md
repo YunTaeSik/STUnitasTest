@@ -46,8 +46,8 @@
 현재 저는 MVVM패턴을 사용하고있습니다.  
  - [base (각종 Base 클래스)](https://github.com/YunTaeSik/STUnitasTest/tree/master/app/src/main/java/com/example/stunitastest/presentation/base)
  - [bidingAdapter (Android BindingAdapter)](https://github.com/YunTaeSik/STUnitasTest/tree/master/app/src/main/java/com/example/stunitastest/presentation/bindingAdapter) 
- - [di (Dagger2.0)](https://github.com/YunTaeSik/STUnitasTest/tree/master/app/src/main/java/com/example/stunitastest/presentation/di)
- - [ui (View, ViewModel)](https://github.com/YunTaeSik/STUnitasTest/tree/master/app/src/main/java/com/example/stunitastest/presentation/i)
+ - [di (Koin)](https://github.com/YunTaeSik/STUnitasTest/tree/master/app/src/main/java/com/example/stunitastest/presentation/di)
+ - [ui (View, ViewModel)](https://github.com/YunTaeSik/STUnitasTest/tree/master/app/src/main/java/com/example/stunitastest/presentation/ui)
    
    
  **Domain Layer**  
@@ -211,53 +211,61 @@ interface SearchService {
     }
 ```
   
-### Dagger2 Example  
-Dagger2는 Application / Activity 까지만 연결.........  
+### Koin (Dagger2 대안) Example  
+DI는 Dagger2.0대신 Koin으로 구현하였습니다.
   
 **module**  
 ```Kotlin
-@Module(includes = [AndroidSupportInjectionModule::class])
-interface ActivityModule {
-    @ContributesAndroidInjector
-    fun introActivityInjector(): IntroActivity
+val repositoryModule = module {
+    single<SearchRepository> { SearchRepositoryImp }
+    single<SearchUseCase> { SearchUseCaseImp(get()) }
 
-    @ContributesAndroidInjector
-    fun searchActivityInjector(): SearchActivity
 }
 
-@Module
-class AdapterModule {
-    @Provides
-    @Singleton
-    fun provideSearchAdapter(): SearchAdapter {
-        return SearchAdapter()
+var adapterModule = module {
+    single<SearchAdapter> { SearchAdapter() }
+}
+
+
+var viewModelModule = module {
+    viewModel {
+        IntroViewModel(androidApplication())
+    }
+
+    viewModel {
+        SearchViewModel(androidApplication(), get())
     }
 }
+
+var moduleList = listOf(
+    repositoryModule, adapterModule, viewModelModule
+)
 ```  
   
-**component**
+**start**
 ```Kotlin
-@Singleton
-@Component(
-    modules = [
-        AndroidInjectionModule::class,
-        ActivityModule::class,
-        AdapterModule::class,
-        RepositoryModule::class
-    ]
-)
-interface AppComponent : AndroidInjector<BaseApplication> {
+class BaseApplication : Application() {
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(base)
+        MultiDex.install(this)
+    }
 
-    @Component.Factory
-    abstract class Builder : AndroidInjector.Factory<BaseApplication>
+    override fun onCreate() {
+        super.onCreate()
 
+        startKoin {
+            androidContext(this@BaseApplication)
+            modules(moduleList)
+        }
+
+    }
 }
 ```  
   
 **inject**  
 ```Kotlin
-    @Inject
-    lateinit var searchAdapter: SearchAdapter
+    private val searchAdapter: SearchAdapter by inject()
+    private val model: SearchViewModel by viewModel()
 ```
 
 ## App 구현 영상  
@@ -270,3 +278,9 @@ interface AppComponent : AndroidInjector<BaseApplication> {
   <img src="https://user-images.githubusercontent.com/23161645/73249346-0cc2a880-41f8-11ea-87d2-4835f0207adb.jpg" width = 250>
   <img src="https://user-images.githubusercontent.com/23161645/73249348-0d5b3f00-41f8-11ea-903f-6d781caab0a9.jpg" hspace=8 width = 250>
  </div>
+ 
+ ## 기타  
+[YtsCleanArchitecture](https://github.com/YunTaeSik/YtsCleanArchitecture)  
+현재의 Domain과 Data를 모듈화하여 새로 만든 프로젝트입니다.  
+Domain과 Data를 모듈화 함으로써 Clean Architecture의 장점인 UI를 독립시키고 데이터베이스를 분리시키고,  
+외부적인 설정에 독립적인 구조를 적용하여 프레임워크에 의존적이지않은 독립적인 코드를 짤 수 있습니다.
