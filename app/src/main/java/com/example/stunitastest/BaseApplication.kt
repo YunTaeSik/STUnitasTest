@@ -23,6 +23,4 @@ class BaseApplication : Application() {
         }
 
     }
-
-
 }
