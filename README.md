@@ -279,9 +279,8 @@ class BaseApplication : Application() {
   <img src="https://user-images.githubusercontent.com/23161645/73249348-0d5b3f00-41f8-11ea-903f-6d781caab0a9.jpg" hspace=8 width = 250>
  </div>
  
- ## 기타 
- YtsCleanArchitecture
- [YtsCleanArchitecture](https://github.com/YunTaeSik/YtsCleanArchitecture)
- 현재의 Domain과 Data를 모듈화하여 새로 만든 프로젝트입니다.
- Domain과 Data를 모듈화 함으로써 Clean Architecture의 장점인 UI를 독립시키고 데이터베이스를 분리시키고, 외부적인 설정에 독립적인 구조를 적용하여
-프레임워크에 의존적이지않은 독립적인 코드를 짤 수 있습니다.
+ ## 기타  
+[YtsCleanArchitecture](https://github.com/YunTaeSik/YtsCleanArchitecture)  
+현재의 Domain과 Data를 모듈화하여 새로 만든 프로젝트입니다.  
+Domain과 Data를 모듈화 함으로써 Clean Architecture의 장점인 UI를 독립시키고 데이터베이스를 분리시키고,  
+외부적인 설정에 독립적인 구조를 적용하여 프레임워크에 의존적이지않은 독립적인 코드를 짤 수 있습니다.
