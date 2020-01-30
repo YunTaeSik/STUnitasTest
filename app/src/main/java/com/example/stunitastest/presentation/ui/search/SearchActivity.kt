@@ -22,11 +22,12 @@ import com.yts.baseproject.extension.hideKeyboard
 import com.yts.baseproject.extension.showLoading
 import com.yts.baseproject.extension.visible
 import kotlinx.android.synthetic.main.activity_search.*
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchActivity : BackDoubleClickFinishActivity<SearchBinding>(), View.OnClickListener {
-    @Inject
-    lateinit var searchAdapter: SearchAdapter
+    private val searchAdapter: SearchAdapter by inject()
+    private val model: SearchViewModel by viewModel()
 
     override fun onLayoutId(): Int {
         return R.layout.activity_search
@@ -34,10 +35,7 @@ class SearchActivity : BackDoubleClickFinishActivity<SearchBinding>(), View.OnCl
 
     override fun setupViewModel(): SparseArray<ViewModel> {
         val setupViewModel = SparseArray<ViewModel>()
-        setupViewModel.put(
-            BR.model,
-            ViewModelProvider(this).get(SearchViewModel::class.java)
-        )
+        setupViewModel.put(BR.model, model)
         return setupViewModel
     }
 

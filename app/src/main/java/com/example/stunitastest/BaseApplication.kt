@@ -1,12 +1,14 @@
 package com.example.stunitastest
 
+import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDex
-import com.example.stunitastest.presentation.di.component.DaggerAppComponent
-import dagger.android.AndroidInjector
-import dagger.android.support.DaggerApplication
+import com.example.stunitastest.presentation.di.module.moduleList
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 
-class BaseApplication : DaggerApplication() {
+
+class BaseApplication : Application() {
     override fun attachBaseContext(base: Context) {
         super.attachBaseContext(base)
         MultiDex.install(this)
@@ -14,11 +16,12 @@ class BaseApplication : DaggerApplication() {
 
     override fun onCreate() {
         super.onCreate()
-        DaggerAppComponent.factory().create(this).inject(this)
-    }
 
-    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-        return DaggerAppComponent.factory().create(this)
+        startKoin {
+            androidContext(this@BaseApplication)
+            modules(moduleList)
+        }
+
     }
 
 

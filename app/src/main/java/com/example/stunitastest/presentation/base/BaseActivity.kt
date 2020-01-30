@@ -7,15 +7,10 @@ import androidx.core.util.keyIterator
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import com.example.stunitastest.BaseApplication
-import com.example.stunitastest.presentation.di.component.DaggerAppComponent
 import com.yts.baseproject.extension.hideKeyboard
-import dagger.android.support.DaggerAppCompatActivity
-import javax.inject.Inject
 
 
-abstract class BaseActivity<B : ViewDataBinding> : DaggerAppCompatActivity() {
+abstract class BaseActivity<B : ViewDataBinding> : AppCompatActivity() {
     private var mLastClickTime: Long = 0
 
     abstract fun onLayoutId(): Int
