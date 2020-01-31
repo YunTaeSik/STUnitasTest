@@ -74,10 +74,10 @@ class SearchActivity : BackDoubleClickFinishActivity<SearchBinding>(), View.OnCl
     }
 
     override fun observer() {
-        binding.model?.isLoading?.observe(this, Observer {
+        model.isLoading?.observe(this, Observer {
             loading.showLoading(it)
         })
-        binding.model?.toastMessage?.observe(this, Observer {
+        model.toastMessageId?.observe(this, Observer {
             makeToast(it)
         })
 
@@ -96,7 +96,7 @@ class SearchActivity : BackDoubleClickFinishActivity<SearchBinding>(), View.OnCl
             }
         })
 
-        binding.model?.listDocument?.observe(this, Observer {
+        model.listDocument?.observe(this, Observer {
 
             searchAdapter.submitList(it)
             searchAdapter.notifyDataSetChanged()

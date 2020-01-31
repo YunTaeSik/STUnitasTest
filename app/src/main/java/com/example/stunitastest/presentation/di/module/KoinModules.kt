@@ -24,11 +24,11 @@ var adapterModule = module {
 
 var viewModelModule = module {
     viewModel {
-        IntroViewModel(androidApplication())
+        IntroViewModel()
     }
 
     viewModel {
-        SearchViewModel(androidApplication(), get())
+        SearchViewModel(get())
     }
 }
 
