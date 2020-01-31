@@ -6,8 +6,8 @@ import com.example.stunitastest.domain.response.SearchResponse
 import io.reactivex.Observable
 
 object SearchRepositoryImp : SearchRepository {
+    private const val authorization = "KakaoAK f1328266d7ef1949f7cd02c8ba212a72"
     private var searchService = SearchService.Creator.create()
-
 
     override fun getImages(
         query: String,
@@ -16,7 +16,7 @@ object SearchRepositoryImp : SearchRepository {
         size: Int?
     ): Observable<SearchResponse> {
         return searchService.getImages(
-            "KakaoAK f1328266d7ef1949f7cd02c8ba212a72",
+            authorization,
             query,
             sort,
             page,
